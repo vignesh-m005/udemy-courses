@@ -1,0 +1,11 @@
+<!-- <p>warning works!</p> -->
+<app-success></app-success>
+<br><br>
+<button class="btn btn-primary" (click)="displayDetails()">Display Details</button>
+<br>
+<p *ngIf="display">This is summa paragraph</p>
+<p *ngFor="let time of clickTime; let i = index" 
+    [ngStyle]="{background: getColor(i)}"
+    [ngClass]="{'white-text': i>=4 }">
+        Time: {{time}}
+</p>
