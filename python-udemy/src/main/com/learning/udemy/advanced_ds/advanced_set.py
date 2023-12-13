@@ -31,3 +31,11 @@ print(s)
 s2 = {7, 6}
 print(s1.isdisjoint(s2)) # is intersection not there
 print(s.isdisjoint(s1))
+
+print(sc.issubset(s))
+print(sc.issuperset(s))
+s = {1, 2, 3}
+print(s1.symmetric_difference(s))
+print(s.union(s1))
+s.update(s1)
+print(s)

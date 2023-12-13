@@ -38,6 +38,6 @@ print(list(map(lambda num: num ** 2, [1, 2, 3, 4, 5])))  # get square
 
 print(list(filter(lambda num: num % 2 == 0, [1, 2, 3, 4, 5, 6])))  # filter even
 
-print(list(map(lambda name: name[0], names))) # Get first character
+print(list(map(lambda name: name[0], names)))  # Get first character
 
-print(list(map(lambda name: name[::-1], names))) # Reverse the name
+print(list(map(lambda name: name[::-1], names)))  # Reverse the name
