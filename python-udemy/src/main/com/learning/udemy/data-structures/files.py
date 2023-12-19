@@ -1,5 +1,4 @@
 import random
-
 myfile = open("myfile.txt")
 # print(myfile.read())
 

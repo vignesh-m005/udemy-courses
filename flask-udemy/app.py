@@ -18,3 +18,8 @@ stores = [
 @app.get("/store")
 def get_stores():
     return {"stores": stores}
+
+
+@app.get("/")
+def default_page():
+    return "Welcome"
