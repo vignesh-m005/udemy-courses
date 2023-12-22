@@ -1,11 +1,27 @@
-from flask import Flask, request
-from db import items, stores
-from flask_smorest import abort
-import uuid
+from flask import Flask # ,request
+from flask_smorest import Api
+from resources.item import blp as ItemBlueprint
+from resources.store import blp as StoreBlueprint
+
+# from db import items, stores
+# from flask_smorest import abort
+# import uuid
 
 app = Flask(__name__)
 
+app.config["PROPAGATE_EXCEPTIONS"] = True
+app.config["API_TITLE"] = "Stores Rest API"
+app.config["API_VERSION"] = "v1"
+app.config["OPENAPI_VERSION"] = "3.0.3"
+app.config["OPENAPI_URL_PREFIX"] = "/"
+app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
+app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
+api = Api(app)
+api.register_blueprint(ItemBlueprint)
+api.register_blueprint(StoreBlueprint)
+
+"""
 @app.get("/store/<string:store_id>")
 def get_store_by_id(store_id):
     try:
@@ -19,6 +35,11 @@ def get_store_by_id(store_id):
 @app.get("/stores")
 def get_stores():
     return {"stores": list(stores.values())}
+
+
+@app.get("/")
+def default():
+    return "Welcome home"
 
 
 @app.post("/store")
@@ -88,6 +109,16 @@ def delete_item(item_id):
         abort(400, "Invalid key mentioned")
 
 
+@app.delete("/store/<string:item_id>")
+def delete_store(store_id):
+    try:
+        del stores[store_id]
+        return {"message": "Store deleted"}, 200
+    except KeyError:
+        abort(400, "Invalid key mentioned")
+
+
+
 @app.put("/item/<string:item_id>")
 def update_item(item_id):
     item_data = request.get_json()
@@ -109,3 +140,6 @@ def update_item(item_id):
         abort(400,
               message="Bad request! Invalid item id")
     return "Update successfully"
+
+
+"""
