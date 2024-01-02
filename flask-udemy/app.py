@@ -1,145 +1,105 @@
-from flask import Flask # ,request
+import os
+from flask_jwt_extended import JWTManager
+from flask import Flask, jsonify
 from flask_smorest import Api
+from sqlalchemy import URL
+import secrets
+
+from blocklist import BLOCKLIST
+from db import db
 from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
-
-# from db import items, stores
-# from flask_smorest import abort
-# import uuid
-
-app = Flask(__name__)
-
-app.config["PROPAGATE_EXCEPTIONS"] = True
-app.config["API_TITLE"] = "Stores Rest API"
-app.config["API_VERSION"] = "v1"
-app.config["OPENAPI_VERSION"] = "3.0.3"
-app.config["OPENAPI_URL_PREFIX"] = "/"
-app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
-app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-
-api = Api(app)
-api.register_blueprint(ItemBlueprint)
-api.register_blueprint(StoreBlueprint)
-
-"""
-@app.get("/store/<string:store_id>")
-def get_store_by_id(store_id):
-    try:
-        return stores[store_id]
-    except KeyError:
-        # return {"message": "Invalid store id - " + str(store_id),
-        #         "status": False}, 400
-        abort(400, message=f"Invalid store id - {store_id}")
+from resources.tags import blp as TagBlueprint
+from resources.user import blp as UserBlueprint
 
 
-@app.get("/stores")
-def get_stores():
-    return {"stores": list(stores.values())}
+def create_app(db_url=None):
+    app = Flask(__name__)
 
+    app.config["PROPAGATE_EXCEPTIONS"] = True
+    app.config["API_TITLE"] = "Stores Rest API"
+    app.config["API_VERSION"] = "v1"
+    app.config["OPENAPI_VERSION"] = "3.0.3"
+    app.config["OPENAPI_URL_PREFIX"] = "/"
+    app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
+    app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
-@app.get("/")
-def default():
-    return "Welcome home"
+    url = URL.create(
+        drivername="postgresql+psycopg2",
+        username="postgres",
+        password="Vignesh@12",
+        host="localhost",
+        port=5432,
+        database="flask-udemy"
+    )
 
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(url.render_as_string(hide_password=False).replace('%', '%%'), "sqlite:///data.db")
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-@app.post("/store")
-def create_new_store():
-    store_data = request.get_json()
+    db.init_app(app)
 
-    if "name" not in store_data:
-        abort(400,
-              message="Bad request. Ensure 'name' is included in JSON")
+    # @app.before_first_request
+    # def create_tables():
+    #     db.create_all()
 
-    for store in stores.values():
-        if store["name"] == store_data["name"]:
-            abort(400, "Store already exist")
+    with app.app_context():
+        db.create_all()
 
-    store_id = uuid.uuid4().hex
-    new_store = {**store_data, "id": store_id}
-    stores[store_id] = new_store
-    return stores, 201
+    api = Api(app)
 
+    app.config["JWT_SECRET_KEY"] = "311079073095142418098352057504553349841"
+    jwt = JWTManager(app)
 
-@app.post("/item")
-def create_item():
-    item_data = request.get_json()
-    if (
-            "price" not in item_data or
-            "name" not in item_data or
-            "store_id" not in item_data
-    ):
-        abort(400,
-              message="Bad request! add price, name, store_id")
+    @jwt.additional_claims_loader
+    def add_claims_to_jwt(identity):
+        if identity == 1:
+            return {"is_admin": True}
+        return {"is_admin": False}
 
-    for item in items.values():
-        if (
-                item_data["name"] == item["name"] and
-                item_data["store_id"] == item["store_id"]
-        ):
-            abort(400, "Item already exist")
+    @jwt.token_in_blocklist_loader
+    def check_if_token_in_blocklist(jwt_header, jwt_payload):
+        return jwt_payload["jti"] in BLOCKLIST
 
-    if item_data["store_id"] in stores.keys():
-        item_id = uuid.uuid4()
-        item = {**item_data, "id": item_id}
-        items[str(item_id)] = item
-        return items, 201
-    # return {"message": "Store not found"}, 400
-    abort(400, message="Store not found")
+    @jwt.revoked_token_loader
+    def revoked_token_callback(jwt_header, jwt_payload):
+        return (
+            jsonify(
+                {"description": "The token has been revoked.", "error": "token_revoked"}
+            ),
+            401,
+        )
 
+    @jwt.expired_token_loader
+    def expired_token_callback(jwt_header, jwt_payload):
+        return (
+            jsonify({"message": "The token has expired.", "error": "token_expired"}),
+            401,
+        )
 
-@app.get("/items")
-def get_all_items():
-    return {"items": list(items.values())}
+    @jwt.invalid_token_loader
+    def invalid_token_callback(error):
+        return (
+            jsonify(
+                {"message": "Signature verification failed.", "error": "invalid_token"}
+            ),
+            401,
+        )
 
+    @jwt.unauthorized_loader
+    def missing_token_callback(error):
+        return (
+            jsonify(
+                {
+                    "description": "Request does not contain an access token.",
+                    "error": "authorization_required",
+                }
+            ),
+            401,
+        )
 
-@app.get("/item/<string:item_id>")
-def get_item_by_id(item_id):
-    try:
-        return {"item": items[item_id]}
-    except KeyError:
-        abort(400, "Invalid item id")
+    api.register_blueprint(ItemBlueprint)
+    api.register_blueprint(StoreBlueprint)
+    api.register_blueprint(TagBlueprint)
+    api.register_blueprint(UserBlueprint)
 
-
-@app.delete("/item/<string:item_id>")
-def delete_item(item_id):
-    try:
-        del items[item_id]
-        return {"message": "Item deleted"}, 200
-    except KeyError:
-        abort(400, "Invalid key mentioned")
-
-
-@app.delete("/store/<string:item_id>")
-def delete_store(store_id):
-    try:
-        del stores[store_id]
-        return {"message": "Store deleted"}, 200
-    except KeyError:
-        abort(400, "Invalid key mentioned")
-
-
-
-@app.put("/item/<string:item_id>")
-def update_item(item_id):
-    item_data = request.get_json()
-    if (
-            "price" not in item_data or
-            "name" not in item_data
-    ):
-        abort(400,
-              message="Bad request! Add price, name fields")
-    try:
-        # items[item_id]["name"] = item_data["name"]
-        # items[item_id]["price"] = item_data["price"]
-
-        item = items[item_id]
-        # item |= item_data   won't work below 3.9 ver
-        item.update(item_data)
-
-    except KeyError:
-        abort(400,
-              message="Bad request! Invalid item id")
-    return "Update successfully"
-
-
-"""
+    return app
