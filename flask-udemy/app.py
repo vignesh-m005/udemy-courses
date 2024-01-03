@@ -1,6 +1,7 @@
 import os
 from flask_jwt_extended import JWTManager
 from flask import Flask, jsonify
+from flask_migrate import Migrate
 from flask_smorest import Api
 from sqlalchemy import URL
 import secrets
@@ -33,11 +34,13 @@ def create_app(db_url=None):
         database="flask-udemy"
     )
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(
+    app.config["SQLALCHEMY_DATABASE_URI"] = url or os.getenv(
         url.render_as_string(hide_password=False).replace('%', '%%'), "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
+
+    migrate = Migrate(app, db)
 
     # @app.before_first_request
     # def create_tables():
