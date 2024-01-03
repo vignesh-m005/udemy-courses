@@ -33,7 +33,8 @@ def create_app(db_url=None):
         database="flask-udemy"
     )
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(url.render_as_string(hide_password=False).replace('%', '%%'), "sqlite:///data.db")
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv(
+        url.render_as_string(hide_password=False).replace('%', '%%'), "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
@@ -68,6 +69,15 @@ def create_app(db_url=None):
             ),
             401,
         )
+
+    @jwt.needs_fresh_token_loader
+    def token_not_fresh_callback(jwt_header, jwt_payload):
+        return jsonify(
+            {
+                "description": "The token is not fresh",
+                "error": "fresh_token_required"
+            }
+        ), 401
 
     @jwt.expired_token_loader
     def expired_token_callback(jwt_header, jwt_payload):
