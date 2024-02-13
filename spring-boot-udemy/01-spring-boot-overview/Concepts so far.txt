@@ -1,6 +1,0 @@
-spring boot demo
-spring boot dev tools
-spring boot actuator
-speing boot starter security
-starting application without ide
-properties -@Value
