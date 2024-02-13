@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/01-crud-demo-student.iml" filepath="$PROJECT_DIR$/.idea/01-crud-demo-student.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crud-demo/crud-demo.iml" filepath="$PROJECT_DIR$/crud-demo/crud-demo.iml" />
+    </modules>
+  </component>
+</project>

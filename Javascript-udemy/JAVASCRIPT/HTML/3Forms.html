@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>form assignment</title>
+        <style>
+            body{
+                background-color: #f2f6ff;
+                margin: 0;
+                padding: 16px;
+            }
+
+            .social-icon{
+                width: 50px;
+                height: 50px;
+                padding-top: 16px;
+                padding-bottom: 16px;
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            form{
+                text-align: center;
+                background-color: white;
+                margin: auto;
+                width: 700px;
+                border: 1px solid #ccc;
+            }
+
+            #form-heading{
+                font-size: 32px;
+                padding-top: 56px;
+                padding-bottom: 32px;
+            }
+
+            #social-wrapper{
+                background-color: #f2f6ff;
+                padding: 24px;
+            }
+
+            #input-wrapper{
+                padding-top: 80px;
+                padding-bottom: 40px;
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+
+            .input-box{
+                font-size: 18px;
+                padding-bottom: 12px;
+                margin-bottom: 36px;
+                border: 0;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
+            }
+
+            button{
+                background-color: #0056ff;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 24px;
+                padding-right: 24px;
+                font-size: 18px;
+                color: white;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form">
+            <h1 id="form-heading">Register</h1>
+            <div id="social-wrapper">
+                <img class="social-icon" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png" alt="google-logo">
+                <img class="social-icon" src="https://freelogopng.com/images/all_img/1657548084facebook-logo-png.png" alt="facebook-logo">
+                <img class="social-icon" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="github-logo">
+                <img class="social-icon" src="https://www.freepnglogos.com/uploads/linkedin-basic-round-social-logo-png-13.png" alt="linkedin-logo">
+            </div>
+            <div id="input-wrapper">
+                <input class="input-box" type="text" placeholder="Username" name="username" id="username" required>
+                <input class="input-box" type="email" placeholder="Email" name="email" id="email" required>
+                <input class="input-box" type="password" name="password" placeholder="Password" id="password" required>
+                <input class="input-box" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+            </div>
+            <button>Register</button>
+        </form>
+
+        <script type="text/Javascript" src="/JAVASCRIPT/3form-events.js"></script>
+    </body> 
+
+</html>

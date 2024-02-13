@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>connect multiple pages</title>
+        <style>
+            table{
+                width: 900px;
+                margin: auto;
+            }
+            table,td,th{
+                border: 1px solid black;
+                border-collapse: collapse;
+                font-size: 24px;
+                text-align: left;
+            }
+            td,th{
+                padding: 16px;
+            }
+            th{
+                background-color: lightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th colspan="3">Invoice #12345</th>
+                <th>05 January 2024</th>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <b>Pay To:</b><br>
+                    The Teck Park<br>
+                    123 Window Street<br>
+                    Boulevard, LA - 56789.
+                </td>
+                <td colspan="2">
+                    <b>Customer:</b> <br>
+                    Vignesh M<br>
+                    Kelapparai vill,<br>
+                    Keeraipatti post,<br>
+                    Harur, TN - 636903.
+                </td>
+            </tr>
+
+            <tr>
+                <th>Name/Description</th>
+                <th>Qty.</th>
+                <th>MRP</th>
+                <th>Amount</th>
+            </tr>
+
+            <tr>
+                <td>Biryani</td>
+                <td>3</td>
+                <td>200</td>
+                <td>600</td>
+            </tr>
+
+            <tr>
+                <td>Apple juice</td>
+                <td>4</td>
+                <td>100</td>
+                <td>400</td>
+            </tr>
+
+            <tr>
+                <th colspan="3">Subtotal:</th>
+                <td>1000</td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Tax:</th>
+                <td>10%</td>
+                <td>100</td>
+            </tr>
+
+            <tr>
+                <th colspan="3">Grand total:</th>
+                <td>Rs. 1100</td>
+            </tr>
+        </table>
+    </body> 
+
+</html>
