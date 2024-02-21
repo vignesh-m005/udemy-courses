@@ -1,0 +1,216 @@
+
+.footer{
+    background-color: black;
+    color: white;
+    font-family: Lato Regular;
+    padding-top: 30px;
+    font-weight: 500;
+    height: 40px;
+    margin-top: auto;
+    margin-bottom: 0px;
+}
+
+.home{
+    padding-bottom: 2.5rem;
+}
+
+header{
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 100%;
+    padding-top: 20px;
+}
+
+#login{
+    margin: 60px;
+}
+
+label{
+    font-weight: bold;
+    font-family: Cambria;
+    font-size: 18px;
+}
+
+input{
+    height: 30px;
+    width: 250px;
+    background-color: darkblue;
+    border: 1px solid blue;
+    color: white;
+    font-size: 18px;
+}
+
+button{
+    height: 40px;
+    width: 190px;
+    color: white;
+    background-color: darkblue;
+    border: 2px solid blue;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+#login-header {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+    margin-right: 100px;
+    width: 20%;
+    float:right;
+}
+
+#header-main{
+    color: white;
+    width: 60%;
+    float:left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+a {
+    color: #FFF;
+    text-decoration: none;
+}
+a:hover {
+     color: #00F
+}
+
+#no-product{
+    margin-top: 200px;
+    font-size: 20px;
+}
+
+#post-product{
+    margin-top: 50px;
+}
+
+#add-prod{
+    margin-top: 50px;
+    margin-right: 50px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#add-prod button:hover{
+    background-color: rgb(11, 102, 52);
+}
+
+#title-price{
+    width: 150px;
+    background-color:darkblue;
+    height: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 15px;
+    border-radius: 20px;
+    float: left; 
+}
+
+#title-price a:hover{
+    color: goldenrod;
+}
+
+#list-others{
+    width: 450px;
+    height: 100px;
+    padding-top: 5px;
+    float: left;
+    font-size: 18px;
+    font-family: Cambria;
+    inline-size: 450px;
+  overflow-wrap: break-word;
+  text-align: justify;
+  padding-left: 15px;
+}
+
+#list-container{
+    border: 1px solid darkblue;
+    height: 135px;
+    margin-right: 350px;
+    border-radius: 20px;
+    float: right;
+    margin-bottom: 30px;
+    
+}
+
+#edit-list{
+    width: 100px;
+    height: 135px;
+    border-radius: 20px;
+    float: right;
+    text-align: right;
+}
+
+#edit-list button {
+    width: 50px;
+    height: 30px;
+    margin: 10px 10px 10px 0px;
+    font-size: 15px;
+}
+
+.close {
+    color: #fff;
+    background-color:darkblue;
+    font-size: 15px;
+    border-radius: 50%;
+}
+.close:hover{
+    color: white;
+    background-color: red;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#list-others span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#product-view {
+    list-style-type: none;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.validity{
+    margin-top: 0px;
+    color: red;
+}
+
+.input-box pre{
+    width: 300px;
+    margin-left: 42%;
+    text-align: left;
+    padding-left: 30px;
+}
+
+#post-product pre{
+    width: 300px;
+    margin-left: 43.5%;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.edit:hover{
+    color: Blue;
+    background-color: white;
+}
+
+.show-pass label{
+    font-size: 14px;
+}
+
+.show-pass input{
+    margin-left: 10px;
+    margin-bottom:  0px;
+    padding-bottom: 0px;
+    width: 20px;
+    height: 20px;
+}

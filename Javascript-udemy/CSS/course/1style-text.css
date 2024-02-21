@@ -1,0 +1,14 @@
+h1{
+    color: blue;
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline; 
+    text-transform: uppercase;
+}
+
+p{
+    color: brown;
+    text-align: justify;
+    /* font-weight: bold; */
+    font-weight: 800;
+}
