@@ -1,12 +1,1 @@
-{
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
-}
+{"events":[{"title":"Japan Temples","image":"http://localhost:8080/japanese-temple.jpg","date":"2024-03-11","description":"Japan Temple","id":"b165c8d4-307a-42e1-99a1-360fbcc182ea"},{"title":"Kerala ","image":"http://localhost:8080/kerala-backwaters.jpg","date":"2024-03-21","description":"Kerala back waters","id":"3503259f-124b-4ef1-94d1-07bf310eec49"}],"users":[{"email":"vignesh.m@mksvision.com","password":"$2a$12$E5VhvNYEknudud.LrzPCxOC6Wyu3ALhVEAnXQi45d9BYEo9keakDK","id":"a12294e0-10d6-4984-8a36-357c15914710"},{"email":"vmurugan@bamboohealth.com","password":"$2a$12$UPg2d8u2A7fh77d5nP8kHeSvxxmEJzTrQ5AfbIHfv1SyOJNzuGH5q","id":"0b9b8302-19b1-4c62-a228-fd2bdbaa248f"},{"email":"it-support@mksvision.com","password":"$2a$12$fh4d/ZmhcYUw5GxniBfOYu7/NfWYYDsW8eUY.54Skz934fIoeWKvm","id":"ee6e7b51-f21e-42e5-b064-ae02dcb03fa3"},{"email":"ejkv@knjuiefh","password":"$2a$12$UcxBoKQPeI7GXbge.r0.OOLl5O2fR62nG6Ml8webHENsLo8RMEJT2","id":"b4b73528-0cb8-4a41-be94-db4895f43dd1"}]}

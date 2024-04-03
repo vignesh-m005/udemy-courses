@@ -1,0 +1,6 @@
+set ws=wscript.createobject("wscript.shell")
+while(true)
+ws.sendkeys "{NUMLOCK}"
+ws.sendkeys "{NUMLOCK}"
+wscript.sleep 60000
+wend
