@@ -10,7 +10,7 @@
 .add-form input{
     width: 70%;
     padding: 10px;
-    margin-bottom: 18px;
+    
     margin-left: 12%;
     border: 1px solid black;
     border-radius: 5px;
@@ -20,6 +20,7 @@
     margin-bottom: 5px;
     font-weight: bold;
     margin-left: 12%;
+    margin-top: 24px;
 }
 
 .add-form h3{
@@ -39,6 +40,7 @@
     transition: border-color 0.25s;
     color: white;
     margin-left: 12%;
+    width: 100px;
   }
   
   .add-form  button:hover {
@@ -47,4 +49,10 @@
   .add-form  button:focus,
   .add-form button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-left: 12%;
   }

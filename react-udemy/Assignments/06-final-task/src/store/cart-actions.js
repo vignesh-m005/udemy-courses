@@ -9,6 +9,9 @@ export function fetchCarts() {
         dispatch(cartActions.replaceCart(cartData));
       }
     } catch (error) {
+      if (error === TypeError) {
+        fetchCarts();
+      }
       alert("ETHO ERROR!!");
     }
   };

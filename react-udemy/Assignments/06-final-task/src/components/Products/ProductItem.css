@@ -9,8 +9,9 @@
     background-color: #4b4b4b;
     text-align: center;
     place-items: center;
-    margin-left: 300px;
+    margin-left: 50px;
     height: 80px;
+    width: 80%;
   }
   
   .product-item__description {
@@ -29,6 +30,10 @@
     flex: 1;
     margin: 0 1rem;
     color: white;
+  }
+
+  .product-item h2:hover{
+    cursor: pointer;
   }
   
   .product-item__price {
@@ -92,3 +97,20 @@
       padding: 0.5rem 1.5rem;
     }
   }
+
+.pd-cart{
+  margin-left: 250px;
+  margin-top: 40px;
+  border: none;
+  width: 150px;
+  height: 33px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pd-cart:hover{
+  border: white 1px solid;
+  background-color: #646cff;
+  color: white;
+}

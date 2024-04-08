@@ -39,7 +39,7 @@ function AuthForm() {
             {isLogin ? "Create new user" : "Login"}
           </Link>
           <button disabled={isSubmitting}>
-            {isSubmitting ? "Submittings" : "Save"}
+            {isSubmitting ? "Submitting" : "Save"}
           </button>
         </div>
       </Form>

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -88,6 +89,11 @@ const cartSlice = createSlice({
         .filter((cart) => cart !== null);
 
       state.cartItems = updatedCart;
+      state.changed = true;
+    },
+    removeUserCart(state, action) {
+      const user = action.payload;
+      state.cartItems = state.cartItems.filter((cart) => cart.user !== user);
       state.changed = true;
     },
     replaceCart(state, action) {

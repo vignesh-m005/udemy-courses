@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "./CartItem.module.css";
 import { cartActions } from "../../store/cart-slice";
 import { productActions } from "../../store/product-slice";
+import { useNavigate } from "react-router-dom";
 
 const CartItem = ({ quantity, productId, user }) => {
   const products = useSelector((state) => state.product.products);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let product = products.filter((product) => {
     return product.id === productId;
@@ -27,7 +29,7 @@ const CartItem = ({ quantity, productId, user }) => {
 
   function addItemHandler() {
     if (product.quantity > 0) {
-      dispatch(cartActions.addItemToCart({ user: 2, productId }));
+      dispatch(cartActions.addItemToCart({ user, productId }));
       dispatch(
         productActions.updateProduct({
           ...product,
@@ -37,10 +39,14 @@ const CartItem = ({ quantity, productId, user }) => {
     }
   }
 
+  function handleCartItemClick() {
+    navigate("/product/" + productId, { state: product });
+  }
+
   return (
     <li className={classes.item}>
       <header>
-        <h3>{product.title}</h3>
+        <h3 onClick={handleCartItemClick}>{product.title}</h3>
         <div className={classes.price}>
           ₹{total}
           <span className={classes.itemprice}>(₹{product.price}/item)</span>
