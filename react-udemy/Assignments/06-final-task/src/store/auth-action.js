@@ -22,7 +22,6 @@ export function addAuth(user, isAdmin) {
       user,
       isAdmin,
     };
-    console.log(user);
     localStorage.setItem("auth", JSON.stringify(credential));
     dispatch(authActions.setUser(credential));
   };
@@ -34,6 +33,5 @@ export function getTokenDuration() {
   const expirationDate = new Date(expiration);
   const now = new Date();
   const duration = expirationDate.getTime() - now.getTime();
-  console.log(duration);
   return duration;
 }

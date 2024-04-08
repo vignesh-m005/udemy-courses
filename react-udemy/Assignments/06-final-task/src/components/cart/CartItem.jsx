@@ -38,7 +38,6 @@ const CartItem = ({ quantity, productId, user }) => {
       );
     }
   }
-
   function handleCartItemClick() {
     navigate("/product/" + productId, { state: product });
   }

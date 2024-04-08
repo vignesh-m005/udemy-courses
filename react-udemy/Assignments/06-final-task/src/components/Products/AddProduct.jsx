@@ -20,7 +20,7 @@ export default function AddProduct() {
     //   return;
     // }
     if (!credential.isAdmin) {
-      navigate("/home");
+      navigate("/");
       return;
     }
   });

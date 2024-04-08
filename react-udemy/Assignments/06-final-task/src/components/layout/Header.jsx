@@ -21,7 +21,7 @@ export default function Header() {
       <nav className="front">
         <span>
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) => {
               return isActive ? "active-nav" : undefined;
             }}

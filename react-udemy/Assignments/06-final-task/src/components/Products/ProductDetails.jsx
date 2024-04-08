@@ -44,7 +44,6 @@ export default function ProductDetails() {
       user: credential.user,
     };
     dispatch(cartActions.addItemToCart(newCart));
-    console.log(seletctedProduct);
     dispatch(
       productActions.updateProduct({
         ...seletctedProduct,

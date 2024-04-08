@@ -12,7 +12,7 @@ export default function Signup() {
   const credential = useSelector((state) => state.auth.credential);
   useEffect(() => {
     if (credential.user) {
-      navigate("/home");
+      navigate("/");
       return;
     }
   });
@@ -73,7 +73,7 @@ export default function Signup() {
     };
     dispatch(userActions.addUser(newUser));
     dispatch(addAuth(id, newUser.admin));
-    navigate("/home");
+    navigate("/");
   }
 
   return (
@@ -131,7 +131,7 @@ export default function Signup() {
               textDecoration: "underline",
               fontSize: "16px",
             }}
-            to="/home"
+            to="/"
           >
             Home
           </Link>

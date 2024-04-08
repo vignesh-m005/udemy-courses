@@ -13,7 +13,7 @@ export default function Login() {
   const credential = useSelector((state) => state.auth.credential);
   useEffect(() => {
     if (credential.user) {
-      navigate("/home");
+      navigate("/");
       return;
     }
   });
@@ -53,7 +53,7 @@ export default function Login() {
       }
     }
     dispatch(addAuth(user[0].id, user[0].admin));
-    navigate("/home");
+    navigate("/");
   }
 
   return (
@@ -96,7 +96,7 @@ export default function Login() {
               textDecoration: "underline",
               fontSize: "16px",
             }}
-            to="/home"
+            to="/"
           >
             Home
           </Link>

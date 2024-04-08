@@ -32,7 +32,6 @@ const ProductItem = ({ product }) => {
       })
     );
   }
-
   function handleProductClick() {
     navigate("/product/" + product.id, { state: product });
   }

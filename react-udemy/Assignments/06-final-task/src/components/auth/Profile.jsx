@@ -20,13 +20,10 @@ export default function Profile() {
 
   const users = useSelector((state) => state.user.users);
   const userArray = users.filter((user) => user.id === userId);
-  console.log(userArray);
-  console.log(userId);
   let loggedUser = undefined;
   if (userArray.length === 1) {
     loggedUser = userArray[0];
   }
-  console.log(loggedUser);
   return (
     <>
       {loggedUser && (

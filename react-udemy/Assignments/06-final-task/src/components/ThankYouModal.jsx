@@ -14,7 +14,7 @@ const ThankYouModal = forwardRef(({ props }, ref) => {
   });
 
   function handleClick() {
-    navigate("/home");
+    navigate("/");
     // dialog.current.close();
   }
 
